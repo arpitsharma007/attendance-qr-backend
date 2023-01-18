@@ -15,6 +15,7 @@ app.get('/api', function (req, res) {
 })
 
 app.get('/api/getqrcode', (req, res) => {
+  uuidString();
   console.log("Inbound request received");
     return res.status(200).json({
         response: `http://localhost:8080/?link=${currentUUID}`
