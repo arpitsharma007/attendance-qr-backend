@@ -27,23 +27,26 @@ app.get("/api/getqrcode", (req, res) => {
 });
 
 app.post("/api/checkqrcode", (req, res) => {
+    var status;
     try {
         const queryId = req.body;
         console.log("id");
         console.log(queryId);
         if (queryId["id"] == currentUUID) {
-            status = "success";
+            return res.status(200).json({ status: "success" });
+        } else {
+            return res.status(200).json({ status: "failure" });
         }
     } catch (e) {
         console.error("Error:", e);
-        status = "failure";
+        return res.status(200).json({ status: "failure" });
     }
 
     console.log("Inbound request received");
 
-    return res.status(200).json({ status });
+    // return res.status(200).json({ status: status });
 
-    res.json({ status });
+    // res.json({ status });
 
     // return res.status(200).json({
     //     response: `http://localhost:3000/?id=${currentUUID}`,
