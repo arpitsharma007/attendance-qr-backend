@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const { v4: uuidv4 } = require("uuid");
 var cors = require("cors");
+var bodyParser = require("body-parser");
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 let currentUUID = "";
 let oldUUID = "";
@@ -23,24 +27,21 @@ app.get("/api/getqrcode", (req, res) => {
 });
 
 app.post("/api/checkqrcode", (req, res) => {
-    console.log("Check qr code request received");
-    let error;
-    let status;
     try {
-        const { queryId } = req.body;
+        const queryId = req.body;
         console.log("id");
         console.log(queryId);
         if (queryId["id"] == currentUUID) {
             status = "success";
         }
     } catch (e) {
-        console.error("Error:", error);
+        console.error("Error:", e);
         status = "failure";
     }
 
     console.log("Inbound request received");
 
-    res.json({ error, status });
+    res.json({ status });
 
     // return res.status(200).json({
     //     response: `http://localhost:3000/?id=${currentUUID}`,
