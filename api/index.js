@@ -32,7 +32,7 @@ app.post("/api/checkqrcode", (req, res) => {
         const queryId = req.body;
         console.log("id");
         console.log(queryId);
-        if (queryId["id"] == currentUUID) {
+        if (queryId["id"] == currentUUID || queryId["id"] == oldUUID) {
             return res.status(200).json({ status: "success" });
         } else {
             return res.status(200).json({ status: "failure" });
