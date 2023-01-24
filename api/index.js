@@ -22,7 +22,7 @@ app.get("/api/getqrcode", (req, res) => {
     uuidString();
     console.log("Inbound request received");
     return res.status(200).json({
-        response: `https://attendify-frontend-1o31.vercel.app/markattendance?id="${currentUUID}"`,
+        response: `https://attendify.ca/markattendance?id=${currentUUID}`,
     });
 });
 
