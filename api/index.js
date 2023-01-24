@@ -41,6 +41,8 @@ app.post("/api/checkqrcode", (req, res) => {
 
     console.log("Inbound request received");
 
+    return res.status(200).json({ status });
+
     res.json({ status });
 
     // return res.status(200).json({
@@ -63,14 +65,14 @@ const port = 4000;
 //new
 
 // //Starting a server
-// app.listen(port, () => {
-//     console.log(`app is running at ${port}`);
-//     // if(appRunningFirstTime == true) {
-//     //   uuidString();
-//     //   appRunningFirstTime = false;
-//     // }
-//     // setInterval(() => uuidString(), 8000)
-// });
+app.listen(port, () => {
+    console.log(`app is running at ${port}`);
+    // if(appRunningFirstTime == true) {
+    //   uuidString();
+    //   appRunningFirstTime = false;
+    // }
+    // setInterval(() => uuidString(), 8000)
+});
 
 module.exports = app;
 
