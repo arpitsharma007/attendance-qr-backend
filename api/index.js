@@ -29,6 +29,7 @@ app.get("/api/getqrcode", (req, res) => {
 app.post("/api/checkqrcode", (req, res) => {
     var status;
     try {
+        console.log(req.body);
         const queryId = req.body;
         console.log("id");
         console.log(queryId);
